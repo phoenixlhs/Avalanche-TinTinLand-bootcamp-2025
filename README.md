@@ -1,7 +1,7 @@
 # Avalanche本地测试网部署步骤
 ## 1. 安装环境Avachelanche-CLI环境
 
-根据Avache官网描述，最快捷的方式为使用官方sh脚本，具体执行命令如下：
+根据Avalanche官网描述，最快捷的方式为使用官方shell脚本，具体执行命令如下：
 ```shell
 curl -sSfL https://raw.githubusercontent.com/ava-labs/avalanche-cli/main/scripts/install.sh | sh -s
 ```
