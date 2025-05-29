@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>普罗米修斯拯救 - Web3像素游戏</title>
+    <title>普罗米修斯的拯救</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.2.1/web3.min.js"></script>
     <style>
         * {
@@ -191,7 +191,7 @@
     <div class="game-container">
         <!-- 钱包连接界面 -->
         <div class="wallet-section" id="walletSection">
-            <h1>普罗米修斯拯救</h1>
+            <h1>普罗米修斯的拯救</h1>
             <p>请连接您的Web3钱包开始游戏</p>
             <br>
             <button class="btn" onclick="connectWallet()">连接钱包</button>
@@ -293,6 +293,10 @@
         
         // 连接钱包
         async function connectWallet() {
+            console.log('连接钱包函数被调用');
+            console.log('当前协议:', window.location.protocol);
+            console.log('window.ethereum存在:', typeof window.ethereum !== 'undefined');
+                       
             if (typeof window.ethereum !== 'undefined') {
                 try {
                     web3 = new Web3(window.ethereum);
@@ -371,7 +375,7 @@
             ctx: null,
             player: { x: 50, y: 0, width: 40, height: 40, jumping: false, velocityY: 0 },
             obstacles: [],
-            gameSpeed: 12, // 默认速度的2倍
+            gameSpeed: 6, // 减半速度
             gameTime: 60,
             gameTimer: null,
             speedTimer: null,
@@ -389,9 +393,9 @@
             adventureGame.canvas.height = window.innerHeight;
             
             // 重置游戏状态
-            adventureGame.player.y = adventureGame.canvas.height - 100;
+            adventureGame.player.y = adventureGame.canvas.height - 90; // 调整初始位置，确保在地面上
             adventureGame.obstacles = [];
-            adventureGame.gameSpeed = 12;
+            adventureGame.gameSpeed = 6; // 减半速度
             adventureGame.gameTime = 60;
             
             // 开始游戏循环
@@ -444,8 +448,9 @@
                 adventureGame.player.velocityY += 0.8;
                 adventureGame.player.y += adventureGame.player.velocityY;
                 
-                if (adventureGame.player.y >= canvas.height - 150) {
-                    adventureGame.player.y = canvas.height - 150;
+                // 地面位置是canvas.height - 50，玩家高度40，所以玩家底部应该在canvas.height - 90
+                if (adventureGame.player.y >= canvas.height - 90) {
+                    adventureGame.player.y = canvas.height - 90;
                     adventureGame.player.jumping = false;
                     adventureGame.player.velocityY = 0;
                 }
@@ -458,10 +463,10 @@
             // 添加障碍物
             if (Math.random() < 0.02) {
                 if (Math.random() < 0.7) {
-                    // 地面石头
+                    // 地面石头 - 调整位置确保在地面上
                     adventureGame.obstacles.push({
                         x: canvas.width,
-                        y: canvas.height - 100,
+                        y: canvas.height - 80, // 地面高度50 + 石头高度30 = 80
                         width: 30,
                         height: 30,
                         type: 'ground'
@@ -470,7 +475,7 @@
                     // 空中飞鸟
                     adventureGame.obstacles.push({
                         x: canvas.width,
-                        y: canvas.height - 200,
+                        y: canvas.height - 150,
                         width: 40,
                         height: 20,
                         type: 'air'
