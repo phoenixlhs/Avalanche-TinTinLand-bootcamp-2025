@@ -73,7 +73,7 @@
             top: 20px;
             left: 20px;
             font-size: 24px;
-            color: #f39c12;
+            color: #fff;
             pointer-events: auto;
         }
         
@@ -82,7 +82,7 @@
             top: 20px;
             right: 20px;
             font-size: 24px;
-            color: #e74c3c;
+            color: #fff;
             pointer-events: auto;
         }
         
@@ -138,7 +138,7 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 24px;
-            color: #e67e22;
+            color: #fff;
         }
         
         .boss-health {
@@ -519,7 +519,7 @@
                 
                 // 移除屏幕外的障碍物
                 if (obstacle.x + obstacle.width < 0) {
-                    gameState.score += 1;
+                    gameState.score += 10;
                     updateUI();
                     adventureGame.obstacles.splice(i, 1);
                 }
