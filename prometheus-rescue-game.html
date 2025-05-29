@@ -375,7 +375,7 @@
             ctx: null,
             player: { x: 50, y: 0, width: 40, height: 40, jumping: false, velocityY: 0 },
             obstacles: [],
-            gameSpeed: 6, // 减半速度
+            gameSpeed: 8, // 减半速度
             gameTime: 60,
             gameTimer: null,
             speedTimer: null,
@@ -445,14 +445,17 @@
             
             // 更新玩家位置
             if (adventureGame.player.jumping) {
-                adventureGame.player.velocityY += 0.8;
+                adventureGame.player.velocityY = 0.8;
                 adventureGame.player.y += adventureGame.player.velocityY;
                 
                 // 地面位置是canvas.height - 50，玩家高度40，所以玩家底部应该在canvas.height - 90
                 if (adventureGame.player.y >= canvas.height - 90) {
-                    adventureGame.player.y = canvas.height - 90;
-                    adventureGame.player.jumping = false;
+                    adventureGame.player.y = canvas.height - 70;
+                    //adventureGame.player.jumping = false;
+                    adventureGame.player.velocityY = -0.8;
+                }else if(adventureGame.player.y == 0){
                     adventureGame.player.velocityY = 0;
+                    adventureGame.player.jumping = false;
                 }
             }
             
