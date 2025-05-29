@@ -449,8 +449,8 @@
                 adventureGame.player.y += adventureGame.player.velocityY;
                 
                 // 地面位置是canvas.height - 50，玩家高度40，所以玩家底部应该在canvas.height - 90
-                if (adventureGame.player.y >= canvas.height - 50) {
-                    adventureGame.player.y = canvas.height - 50;
+                if (adventureGame.player.y >= canvas.height - 150) {
+                    adventureGame.player.y = canvas.height - 150;
                     //adventureGame.player.jumping = false;
                     adventureGame.player.velocityY = -2;
                 }else if(adventureGame.player.y == 0){
