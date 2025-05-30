@@ -424,7 +424,7 @@
                 event.preventDefault();
                 if (!adventureGame.player.jumping) {
                     adventureGame.player.jumping = true;
-                    adventureGame.player.velocityY = -25;
+                    adventureGame.player.velocityY = -18;
                 }
             }
         }
@@ -449,7 +449,7 @@
                 
                 // 地面位置是canvas.height - 50，玩家高度40，所以玩家底部应该在canvas.height - 90
                 if (adventureGame.player.y <= canvas.height - 150) {
-                    adventureGame.player.velocityY = 25;
+                    adventureGame.player.velocityY = 18;
                 }else if(adventureGame.player.y == adventureGame.canvas.height - 90){
                     adventureGame.player.velocityY = 0;
                     adventureGame.player.jumping = false;
