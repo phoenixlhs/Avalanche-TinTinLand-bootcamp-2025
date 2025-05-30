@@ -393,7 +393,7 @@
             adventureGame.canvas.height = window.innerHeight;
             
             // 重置游戏状态
-            adventureGame.player.y = adventureGame.canvas.height - 90; // 调整初始位置，确保在地面上
+            adventureGame.player.y = 672;//adventureGame.canvas.height - 90; // 调整初始位置，确保在地面上
             adventureGame.obstacles = [];
             adventureGame.gameSpeed = 6; // 减半速度
             adventureGame.gameTime = 60;
@@ -424,7 +424,7 @@
                 event.preventDefault();
                 if (!adventureGame.player.jumping) {
                     adventureGame.player.jumping = true;
-                    //adventureGame.player.velocityY = -15;
+                    adventureGame.player.velocityY = 2;
                 }
             }
         }
@@ -445,7 +445,7 @@
             
             // 更新玩家位置
             if (adventureGame.player.jumping) {
-                adventureGame.player.velocityY = 2;
+                //adventureGame.player.velocityY = 2;
                 adventureGame.player.y += adventureGame.player.velocityY;
                 
                 // 地面位置是canvas.height - 50，玩家高度40，所以玩家底部应该在canvas.height - 90
